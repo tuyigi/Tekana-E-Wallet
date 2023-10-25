@@ -1,0 +1,91 @@
+syntax="proto3";
+import "google/protobuf/any.proto";
+package ms_transaction;
+
+service TransactionTypeService{
+  rpc createTransactionType(createTransactionTypeDto) returns (createTransactionTypeResponseDto) {}
+  rpc getTransactionTypes(transactionTypeFilters) returns (transactionFilterResponseDto) {}
+}
+
+service TransactionService{
+  rpc initiateTransaction(initiateTransactionDto) returns (initiateTransactionResponseDto) {}
+  rpc getTransactions(transactionFilterDto) returns (transactionFilterResponseDto) {}
+}
+
+
+message transactionTypeFilters {
+  string code = 1;
+  string name = 2;
+}
+
+message transactionFilterDto{
+  int32 transaction_type_id = 1;
+  optional string reference_number = 2;
+  ChannelType channel_type = 4;
+  string external_reference_number = 5;
+  int32  debited_wallet_id = 6;
+  int32  credited_wallet_id = 7;
+  int32  debited_wallet_balance = 8;
+  int32 credited_wallet_balance = 9;
+  optional Status status = 11;
+}
+
+message transactionFilterResponseDto{
+  int32 status = 1;
+  string message = 2;
+  optional google.protobuf.Any data = 3;
+}
+
+message initiateTransactionResponseDto{
+  int32 status = 1;
+  string message = 2;
+  optional initiateTransactionDto data = 3;
+}
+
+message initiateTransactionDto {
+  int32 transaction_type_id = 1;
+  optional string reference_number = 2;
+  ChannelType channel_type = 4;
+  string external_reference_number = 5;
+  int32  debited_wallet_id = 6;
+  int32  credited_wallet_id = 7;
+  int32  debited_wallet_balance = 8;
+  int32 credited_wallet_balance = 9;
+  int32 amount = 10;
+  optional Status status = 11;
+  optional string status_message = 12;
+}
+
+enum Status{
+  FAILED = 0;
+  COMPLETED = 1;
+  REVERSED = 2;
+  CANCELLED = 3;
+  PENDING = 4;
+}
+
+enum ChannelType{
+  WEB = 0;
+  APP = 1;
+  KIOSK = 2;
+  USSD = 4;
+}
+
+message createTransactionTypeDto{
+  string code = 1;
+  string name = 2;
+  string description = 3;
+  int32 minimum_amount = 4;
+  int32 maximum_amount = 5;
+  TypeStatus status = 6;
+}
+
+enum TypeStatus {
+  ACTIVE = 0;
+  INACTIVE = 1;
+}
+
+message createTransactionTypeResponseDto{
+  int32 status = 1;
+  string message = 2;
+}

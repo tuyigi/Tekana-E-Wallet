@@ -1,0 +1,86 @@
+syntax = "proto3";
+package ms_wallet;
+
+service WalletService{
+  rpc createWallet(walletDto) returns (CreateWalletResponseDto) {}
+  rpc findWallet(walletFilters) returns (CreateWalletResponseDto) {}
+  rpc processWalletOperation(walletOperationDto) returns (CreateWalletResponseDto) {}
+}
+
+service WalletTypeService{
+  rpc createWalletType (WalletTypeDto) returns (CreateWalletTypeResponseDto) {}
+  rpc getWalletTypes(WalletTypeDto) returns (GetWalletsResponseDto) {}
+}
+
+message walletOperationDto{
+    enumWalletOperation action = 1;
+    int32 amount = 2;
+    int32 wallet_id = 3;
+}
+
+
+enum enumWalletOperation{
+  WITHDRAW = 0;
+  DEPOSIT = 1;
+}
+
+
+message walletFilters{
+  int32 id = 1;
+  optional string account_number = 2;
+}
+
+
+message GetWalletsResponseDto{
+  int32 status = 1;
+  string message = 2;
+  repeated WalletTypeDto data = 3;
+}
+
+message WalletTypeDto{
+  string code = 1;
+  string name = 2;
+  string description = 3;
+  float maximum_transaction_amount = 4;
+  float minimum_transaction_amount = 5;
+  optional int32 id = 6;
+}
+
+message CreateWalletTypeResponseDto {
+  int32 status = 1;
+  string message = 2;
+  optional WalletTypeDto data = 3;
+}
+
+message CreateWalletResponseDto{
+  int32 status = 1;
+  string message = 2;
+  optional CreateWalletResponse data = 3;
+}
+
+
+message walletDto{
+  int32 customer_id = 1;
+  int32 wallet_type_id = 2;
+}
+
+message CreateWalletResponse{
+  int32 id = 1;
+  int32 customer_id = 2;
+  CurrencyCode currency_code = 3;
+  string account_number = 4;
+  float current_balance = 5;
+  WalletStatus status = 6;
+  optional int32 wallet_type_id = 7;
+}
+
+enum WalletStatus{
+  ACTIVE = 0;
+  INACTIVE = 1;
+  DORMANT = 2;
+}
+
+enum CurrencyCode {
+  RWF = 0;
+  USD = 1;
+}
