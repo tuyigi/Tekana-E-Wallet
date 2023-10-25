@@ -6,7 +6,6 @@
 
 Rebuild from scratch a back-end solution for a legacy platform that serves 1 million customers around the world.
 
-## About the project
 
 
 ## Scope of the project
@@ -88,6 +87,9 @@ Write the back-end solution with a minimum feature that showcases how you would 
 
 ## Architecture of the system
 
+<img width="1005" alt="Screen Shot 2023-10-24 at 11 20 53" src="https://github.com/tuyigi/Tekana-E-Wallet/assets/29768433/d4406939-8957-4d47-95fb-d137e3c47669">
+
+
 ### Details of proposed architecture
   - Load balancers: Distribute incoming traffic across multiple servers or resources, allowing you to easily scale your infrastructure by adding or removing servers as needed to handle increased loads.
   - App Servers: These are server instance responsible for handling incoming traffic redirected to the server. and API gateway will handle the rest
@@ -99,6 +101,9 @@ Write the back-end solution with a minimum feature that showcases how you would 
 
 ### Back-end Solution
 1. Database Design:
+
+![Screen Shot 2023-10-24 at 10 21 59](https://github.com/tuyigi/Tekana-E-Wallet/assets/29768433/07ee4961-e9af-4e3a-ab77-1def566ee8a5)
+
 
 2. Micrservice Design Pattern:
    - Miscroservice Architecture
