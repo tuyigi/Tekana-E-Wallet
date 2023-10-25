@@ -102,7 +102,7 @@ Write the back-end solution with a minimum feature that showcases how you would 
 ### Back-end Solution
 1. Database Design:
 
-![Screen Shot 2023-10-24 at 10 21 59](https://github.com/tuyigi/Tekana-E-Wallet/assets/29768433/07ee4961-e9af-4e3a-ab77-1def566ee8a5)
+![Tekana E-wallet Customer Service (3)](https://github.com/tuyigi/Tekana-E-Wallet/assets/29768433/883ee03a-9f70-44bd-8a27-135a0e13e8c4)
 
 
 2. Micrservice Design Pattern:
